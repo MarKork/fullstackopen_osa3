@@ -9,7 +9,7 @@ app.use(cors())
 app.use(morgan('tiny'))
 app.use(express.static('build'))
 
-  let persons = [
+let persons = [
     {
         "name": "Arto Hellas",
         "number": "040-123456",
