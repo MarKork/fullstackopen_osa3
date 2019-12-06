@@ -88,26 +88,19 @@ app.use(express.static('build'))
     const newPerson = new Contact({
       name: body.name,
       number: body.number,
-      
     })
-    console.log(req.body)
-    console.log(req.params.id)
-
-    /*Contact.findByIdAndUpdate(req.params.id, contact, {new:true})
-      .then(updatedContact => {
-        res.json(updatedContact.toJSON())
-      })
-      .catch(error => next(error))
-      console.log(error)*/
-
-
-      Contact.findByIdAndRemove(req.params.id)
+    console.log(newPerson)
+    
+    Contact.findByIdAndRemove(req.params.id)
       .then(result => {
         res.status(204).end()
       })
       .catch(error => next(error))
-      console.log("deletoinnin jälkeen")
-      newPerson.save().then(savedPerson =>{res.json(savedPerson.toJSON())})
+    
+    newPerson.save()
+      .then(savedPerson =>{res.json(savedPerson.toJSON())})
+      .catch(error => next(error))
+    
   })
 
   app.get('/info', (req, res, next) => {
